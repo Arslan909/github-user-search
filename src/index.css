@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Tomorrow&display=swap');
+
+*{
+  margin: 0;
+  border: 0;
+}
+
+.container{
+  background-color: #000000;
+  color: #7c3aed;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 5px solid blueviolet; */
+  width: 80%;
+  font-family: 'Inter', sans-serif;
+}
+
+.searcBar{
+  /* border: 5px solid blueviolet; */
+  width: 292px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+/* info card compoenent css */
+.info-container{
+  display: flex;
+  justify-content: space-between;
+  /* border: 5px solid blue; */
+  width: 50%;
+  color: white;
+}
+.pfp-container{
+  display: flex;
+  /* margin-left: 10px; */
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 15px;
+
+}
+.pfp-image{
+  max-width: 60px;
+
+}
+.profile-info{
+  margin-left: 10px;
+  min-width: 50%;
+  margin-top: 20px;
+  /* border: 5px solid rgb(255, 0, 153); */
+}
