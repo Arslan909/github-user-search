@@ -6,13 +6,15 @@
 }
 
 .container{
-  background-color: #000000;
-  color: #7c3aed;
+  background-color: #1e1e1e;
+  color: #7d5bed;
   min-width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
+  padding-bottom: 40px;
 }
 .navContainer{
   display: flex;
@@ -25,29 +27,46 @@
 
 .searcBar{
   /* border: 5px solid blueviolet; */
-  width: 292px;
-  height: 20px;
-  border-radius: 10px;
+  width: 330px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #363636;
+  color: #d6d6d6;
+}
+
+.search-btn{
+  width: 333px;
+  height: 30px;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: #7d5bed;
+  color: #d6d6d6;
 }
 
 /* info card compoenent css */
 .info-container{
   display: flex;
   justify-content: space-between;
-  /* border: 5px solid blue; */
-  width: 50%;
-  color: white;
+  border: 1px solid #d6d6d6;
+  width: 90%;
+  color: #d6d6d6;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #363636;
+
 }
 .pfp-container{
   display: flex;
-  /* margin-left: 10px; */
+  margin-left: 40px;
   border-radius: 50%;
   overflow: hidden;
-  margin-top: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* border: 5px solid rgb(210, 31, 28); */
 
 }
 .pfp-image{
-  max-width: 60px;
+  max-width: 123px;
 
 }
 .profile-info{

@@ -11,6 +11,8 @@ export default function InfoCard(prop){
         <div className="profile-info">
   
           <h3 className="user-name">{prop.name}</h3>
+          <span className="follower">follower: {prop.follower}</span> <span className="following">following: {prop.following}</span>
+          <p className="repository">repository: {prop.repository}</p>
   
         </div>
       </div>
