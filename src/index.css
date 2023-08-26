@@ -3,6 +3,7 @@
 *{
   margin: 0;
   border: 0;
+  padding: 0;
 }
 
 .container{
@@ -19,23 +20,29 @@
 .navContainer{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   /* border: 5px solid blueviolet; */
   width: 80%;
   font-family: 'Inter', sans-serif;
 }
+.heading{
+  text-align: center;
+}
 
 .searcBar{
   /* border: 5px solid blueviolet; */
-  width: 330px;
+  /* width: 330px; */
+  width: 100%;
   height: 30px;
   border-radius: 5px;
   background-color: #363636;
   color: #d6d6d6;
+  padding: 0;
 }
 
 .search-btn{
-  width: 333px;
+  /* width: 333px; */
+  width: 100%;
   height: 30px;
   margin-top: 5px;
   border-radius: 5px;
@@ -44,34 +51,68 @@
 }
 
 /* info card compoenent css */
-.info-container{
+.info-container {
   display: flex;
   justify-content: space-between;
   border: 1px solid #d6d6d6;
-  width: 90%;
+  width: 84%;
+  max-width: 380px;
+  height: 150px;
   color: #d6d6d6;
   border-radius: 10px;
   margin: 10px;
   background-color: #363636;
-
 }
-.pfp-container{
+
+.pfp-container {
   display: flex;
-  margin-left: 40px;
   border-radius: 50%;
   overflow: hidden;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  /* border: 5px solid rgb(210, 31, 28); */
+  margin: 20px 0;
+  margin-left: 20px;
+}
+
+.pfp-image {
+  width: 100%; 
+  max-width: 135px;
+  min-width: 111px;
+  height: auto; /* Maintain aspect ratio */
+}
+
+.profile-info {
+  flex-grow: 1; 
+  padding: 20px;
+}
+/* small screen image css */
+@media (max-width: 320px){
+  .pfp-image {
+    width: 100%;
+    max-width: 185px;
+    min-width: 111px;
+    height: auto;
+  }
+}
+
+.bodyContainer{
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
-.pfp-image{
-  max-width: 123px;
 
-}
-.profile-info{
-  margin-left: 10px;
-  min-width: 50%;
-  margin-top: 20px;
-  /* border: 5px solid rgb(255, 0, 153); */
+/* css for laptop screens */
+
+@media (min-width: 426px) {
+  .bodyContainer{
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  
+  }
 }
