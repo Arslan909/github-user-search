@@ -2,8 +2,6 @@ import React from "react"
 
 export default function NavSearchbar({childToParent}){
   let [userName, setUserName] = React.useState()
-
-  let data = ""
   
   function handleUserName(event){
     setUserName(event.target.value)
