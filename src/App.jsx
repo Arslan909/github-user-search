@@ -1,24 +1,28 @@
+import React from "react"
 import NavSearchbar from "./components/NavSearchbar"
 import InfoCard from "./components/InfoCard"
-
-import React from "react"
-
+import LikeList from "./components/LikeList"
 
 
 export default function App(){
+  const token = "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"
 
   const [data, setData] = React.useState('');
+  let [allUsers, setAllUsers] = React.useState([])
+  let [allUsersInfo, setAllUsersInfo] = React.useState([])
+  const [likedProfiles, setLikedProfiles] = React.useState([]);
+  const [showList, setList] = React.useState(false)
+  
   
   const childToParent = (childdata) => {
     setData(childdata);
   }
+
+  function handleLike(likedProfile) {
+    setLikedProfiles(prevLikedProfiles => [...prevLikedProfiles, likedProfile]);
+  }
   
-  let [allUsers, setAllUsers] = React.useState([])
-  let [allUsersInfo, setAllUsersInfo] = React.useState([])
-
-  const token = "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"
   const userName = data
-
   React.useEffect(() => {
 
     if(userName){
@@ -32,7 +36,7 @@ export default function App(){
               repoLink: item.repos_url,
             }
           })
-    
+
           setAllUsers(users);
 
           // Fetch user info for each user
@@ -48,7 +52,6 @@ export default function App(){
                 followers: userInfo.followers,
                 following: userInfo.following,
                 public_repos: userInfo.public_repos,
-                // public_repos_link: userInfo.repoLink
 
               }))
           ));
@@ -71,11 +74,11 @@ export default function App(){
         following = {item.following}
         follower = {item.followers}
         repository = {item.public_repos}
-        // repositoryLink = {item.public_repos_link}
+        onLike={handleLike}
       />
     )
   })
-
+//  UI component rendering
   return(
 
       <div className="container">
@@ -88,6 +91,9 @@ export default function App(){
         <div className="bodyContainer">
           {usersData.length > 0 ? usersData : "Search for users on github"}
         </div>
+
+        <button onClick={()=>{setList(!showList)}}>show liked</button>
+        {showList && <LikeList likedProfiles={likedProfiles} />}
 
       </div>
   )

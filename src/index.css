@@ -121,6 +121,16 @@
   cursor: pointer;
   font-size: 17px;
 }
+.like-btn{
+  background-color: #7d5bed;
+  color: #d6d6d6;
+  /* border: none; */
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 17px;
+}
 
 .close-btn{
   visibility: hidden;
