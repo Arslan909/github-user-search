@@ -6,7 +6,6 @@ export default function LikeList({ likedProfiles, show, onRemove }) {
       <h3 className="Liked-Users-h3">Liked Users</h3>
       <ul>
         {likedProfiles.map((item) => (
-          // <li key={item.id}>user: {item.name}</li>
           <li key={item.id} className="info-container-in-likedList">
             <div className="pfp-container">
               <img alt="user-pfp" className="pfp-image" src={item.pfp} />
