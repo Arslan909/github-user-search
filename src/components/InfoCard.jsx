@@ -2,10 +2,11 @@ import React, { useState } from "react";
 
 export default function InfoCard(prop) {
   const user = prop.uName;
-  const token = "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";
+  const token = process.env.REACT_APP_API_KEY;
   const [repos, setRepos] = useState([]);
   const [showRepos, setShowRepos] = useState(false);
 
+  // this function fetch repository information of the specified user
   function fetchRepoData() {
     fetch(`https://api.github.com/users/${user}/repos`, {
       header: { Authorization: `Bearer ${token}` }

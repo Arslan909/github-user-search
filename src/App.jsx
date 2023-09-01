@@ -5,37 +5,39 @@ import LikeList from "./components/LikeList"
 
 
 export default function App() {
-  const token = "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"
+  const token = process.env.REACT_APP_API_KEY;
 
-  const [data, setData] = React.useState('');
+  const [data, setData] = React.useState('');//store the user_name coming from input form in the navbar component
   let [allUsers, setAllUsers] = React.useState([])
   let [allUsersInfo, setAllUsersInfo] = React.useState([])
   const [likedProfiles, setLikedProfiles] = React.useState([]);
   const [showList, setList] = React.useState(false)
-  const [toggleLikeBtn, settoggleLikeBtn] = React.useState(false);
 
 
+  // this function itfaking care of the input form (the profile name provied by the users to in the search bar which in present in a separate navbar component)
   const childToParent = (childdata) => {
     setData(childdata);
   }
 
+  // this function is handling how the the profile liked by the user will be stored in a separate list on the app 
   function handleLike(likedProfile) {
     const isAlreadyLiked = likedProfiles.find(profile => profile.uName === likedProfile.uName);
-    if(!isAlreadyLiked){
+    if (!isAlreadyLiked) {
       setLikedProfiles(prevLikedProfiles => [...prevLikedProfiles, likedProfile]);
 
     }
-    // settoggleLikeBtn(true);
   }
-
+  // this function is handling how the the profile liked by the user will be removed in a separate list on the app 
   function handleRemove(uName) {
-    // console.log(id);
     setLikedProfiles(prevLikedProfiles =>
       prevLikedProfiles.filter(profile => profile.uName !== uName)
     );
-    // settoggleLikeBtn(false);
   }
 
+  /* this messing function fetch all the users related to the username provided 
+     then for each resulted profiles it fetches thier realted profile information and
+     links to the profile page on github
+  */
   const userName = data
   React.useEffect(() => {
 
@@ -62,7 +64,7 @@ export default function App() {
                 id: userInfo.id,
                 login: userInfo.login,
                 name: userInfo.name,
-                userLink : userInfo.html_url,
+                userLink: userInfo.html_url,
                 avatar_url: userInfo.avatar_url,
                 followers: userInfo.followers,
                 following: userInfo.following,
@@ -77,9 +79,6 @@ export default function App() {
             })
         })
     }
-    else{
-      "no result found!"
-    }
   }, [data]);
 
   const usersData = allUsersInfo.map((item, index) => {
@@ -90,7 +89,7 @@ export default function App() {
         img={item.avatar_url}
         uName={item.login}
         name={item.name}
-        htmlLink = {item.userLink}
+        htmlLink={item.userLink}
         following={item.following}
         follower={item.followers}
         repository={item.public_repos}
@@ -108,11 +107,11 @@ export default function App() {
 
       <div>
         <button className={`liked-listBtn ${showList ? "liked-listBtn-open" : ""}`} onClick={() => { setList(!showList) }}>{showList ? "<" : ">"}</button>
-        <LikeList 
-          likedProfiles={likedProfiles} 
-          show={showList} 
+        <LikeList
+          likedProfiles={likedProfiles}
+          show={showList}
           onRemove={handleRemove}
-          />
+        />
       </div>
 
       <div className="navContainer">
