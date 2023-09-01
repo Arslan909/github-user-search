@@ -25,7 +25,9 @@ export default function InfoCard(prop) {
 
   function handleLike(){
     let likeUserInfo =  {
+      uName: prop.uName,
       name : prop.name,
+      htmlLink:prop.htmlLink,
       pfp : prop.img,
       follower : prop.follower,
       following : prop.following,
@@ -42,11 +44,15 @@ export default function InfoCard(prop) {
       </div>
 
       <div className="profile-info">
-        <h3 className="user-name">{prop.name}</h3>
+        <h2 className="user-name" ><a className="user-profile-link" href={prop.htmlLink} target="_blank">{prop.uName}</a></h2>
+        <h5 className="user-name">{prop.name}</h5>
         <span className="follower">follower: {prop.follower}</span>{" "}
         <span className="following">following: {prop.following}</span>
         <p className="repository">repository: {prop.repository}</p>
-        <button className="like-btn" onClick={handleLike}>like</button><br />
+        <button className="like-btn" onClick={handleLike}>
+          {prop.isLiked ? "liked" : "like"}
+        </button>
+        <br />
         <button onClick={toggleRepos} className="repo-info-toggle">{showRepos ? "Hide Repositories" : "Show Repositories"}</button>
       </div>
 
