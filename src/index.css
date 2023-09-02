@@ -18,7 +18,7 @@
   padding-bottom: 40px;
 }
 
-.navContainer{
+.navContainer {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -26,12 +26,13 @@
   width: 80%;
   font-family: 'Inter', sans-serif;
 }
-.heading{
+
+.heading {
   text-align: center;
   font-size: 40px;
 }
 
-.searcBar{
+.searcBar {
   /* border: 5px solid blueviolet; */
   /* width: 330px; */
   width: 100%;
@@ -44,7 +45,7 @@
   text-indent: 5px;
 }
 
-.search-btn{
+.search-btn {
   /* width: 333px; */
   width: 100%;
   height: 30px;
@@ -55,20 +56,24 @@
   font-size: 17px;
 }
 
-/* info card component css */
-.info-container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #d6d6d6;
-  max-width: 340px;
-  min-width: 339px;
-  min-height: 300px; /* Set a minimum height */
-  color: #d6d6d6;
-  border-radius: 10px;
-  background-color: #363636;
-  margin: 10px;
-  padding: 10px;
-  font-family: 'Inter', sans-serif;
+@media (min-width: 377px) {
+
+  /* info card component css */
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #d6d6d6;
+    max-width: 340px;
+    min-width: 339px;
+    min-height: 300px;
+    color: #d6d6d6;
+    border-radius: 10px;
+    background-color: #363636;
+    margin: 10px;
+    /* padding: 10px; */
+    font-family: 'Inter', sans-serif;
+  }
+
 }
 
 .pfp-container {
@@ -84,7 +89,7 @@
   width: 100%;
   max-width: 135px;
   min-width: 111px;
-  height: auto; /* Maintain aspect ratio */
+  height: auto;
   border-radius: 50%;
 }
 
@@ -100,18 +105,21 @@
 
 .repo-item {
   margin-bottom: 10px;
+  padding: 5px;
 }
 
 .repo-name {
   font-weight: bold;
+  word-wrap: break-word;
 }
 
 .repo-url {
   color: #7d5bed;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
-.repo-info-toggle{
+.repo-info-toggle {
   background-color: #7d5bed;
   color: #d6d6d6;
   /* border: none; */
@@ -122,18 +130,157 @@
   font-size: 17px;
 }
 
-.close-btn{
+.user-profile-link {
+  text-decoration: none;
+  color: #d6d6d6;
+  cursor: pointer;
+}
+
+.user-name {
+  word-wrap: break-word;
+}
+
+
+.like-btn {
+  background-color: #7d5bed;
+  color: #d6d6d6;
+  /* border: none; */
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.close-btn {
   visibility: hidden;
 }
-.repos-modal-content > h3{
+
+.repos-modal-content>h3 {
   visibility: hidden;
+}
+
+/* liked users list css */
+
+.liked-listBtn {
+  background-color: #7d5bed;
+  color: #d6d6d6;
+  /* border: none; */
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 17px;
+  position: fixed;
+  left: 5px;
+  top: 265px;
+  transition: left 0.5s Fast Out, Linear In;
+}
+
+.liked-listBtn-open {
+  left: 70%;
+}
+
+
+.liked-user-list-container {
+  position: fixed;
+  top: 60px;
+  left: -100%;
+  width: 70%;
+  height: 85%;
+  background-color: #363636;
+  transition: left 0.5s Fast Out, Linear In;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-right: 1px solid #d6d6d6;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+  overflow-y: auto;
+}
+
+.liked-user-list-visible {
+  left: 0;
+  top: 60px
+}
+
+.Liked-Users-h3 {
+  font-size: 25px;
+  font-family: 'Inter', sans-serif;
+  background-color: #7d5bed;
+  color: #d6d6d6;
+  text-indent: 5px;
+
+}
+
+
+.info-container-in-likedList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d6d6d6;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  color: #d6d6d6;
+  border-radius: 10px;
+  background-color: #363636;
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Inter', sans-serif;
+}
+
+.remove-from-likedLisr-btn {
+  background-color: #7d5bed;
+  color: #d6d6d6;
+  /* border: none; */
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* info-container css for small size mobiles  */
+@media (max-width: 320px) {
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #d6d6d6;
+    max-width: 240px;
+    min-width: 240px;
+    min-height: 300px;
+    color: #d6d6d6;
+    border-radius: 10px;
+    background-color: #363636;
+    margin: 10px;
+    font-family: 'Inter', sans-serif;
+  }
+
+}
+
+/* info-container css from mid size mobiles */
+@media (min-width: 323px) and (max-width: 424px) {
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #d6d6d6;
+    max-width: 295px;
+    min-width: 295px;
+    min-height: 300px;
+    color: #d6d6d6;
+    border-radius: 10px;
+    background-color: #363636;
+    margin: 10px;
+    font-family: 'Inter', sans-serif;
+  }
+
 }
 
 
 
 /* laptop screens */
 @media (min-width: 426px) {
-  .bodyContainer{
+  .bodyContainer {
     min-width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -141,50 +288,63 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-  
+
   }
 
-  /* popup window css (idk whats happening here*/
-.repos-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  /* popup window css on laptop screen*/
+  .repos-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .repos-modal-content {
+    background-color: #363636;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 80%;
+    max-height: 70%;
+    overflow: auto;
+    color: #d6d6d6;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .repos-modal-content>h3 {
+    visibility: visible;
+    background-color: #7d5bed;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  .close-btn {
+    visibility: visible;
+    background-color: #7d5bed;
+    color: #d6d6d6;
+    /* border: none; */
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  /* liked list window css on laptop screens */
+  .liked-user-list-container {
+    width: 25%;
+  }
+
+  .liked-listBtn-open {
+    left: 25%;
+    /* Adjust this value to match the width of the liked list */
+  }
+
 }
 
-.repos-modal-content {
-  background-color: #363636;
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 80%;
-  max-height: 70%;
-  overflow: auto;
-  color: #d6d6d6;
-  font-family: 'Inter', sans-serif;
-}
-.repos-modal-content > h3 {
-  visibility: visible;
-  background-color: #7d5bed;
-  justify-content: center;
-  margin-bottom: 10px;
-  padding: 5px;
-}
 
-.close-btn {
-  visibility: visible;
-  background-color: #7d5bed;
-  color: #d6d6d6;
-  /* border: none; */
-  border-radius: 5px;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-}
