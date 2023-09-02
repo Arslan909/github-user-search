@@ -25,6 +25,7 @@
   /* border: 5px solid blueviolet; */
   width: 80%;
   font-family: 'Inter', sans-serif;
+  max-width: 348px;
 }
 
 .heading {
@@ -285,10 +286,13 @@
     min-height: 100vh;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     flex-wrap: wrap;
 
+  }
+  .info-container{
+    max-height: 410px;
   }
 
   /* popup window css on laptop screen*/
