@@ -12,6 +12,8 @@ export default function App() {
   let [allUsersInfo, setAllUsersInfo] = React.useState([])
   const [likedProfiles, setLikedProfiles] = React.useState([]);
   const [showList, setList] = React.useState(false)
+  const [searched, setSearched] = React.useState(false);
+
 
 
   // this function itfaking care of the input form (the profile name provied by the users to in the search bar which in present in a separate navbar component)
@@ -40,9 +42,8 @@ export default function App() {
   */
   const userName = data
   React.useEffect(() => {
-
     if (userName) {
-      fetch(`https://api.github.com/search/users?q=${userName}`, { header: { Authorization: `Bearer ${token}`, } })
+      fetch(`https://api.github.com/search/users?q=${userName}`, { header: { Authorization: `Bearer ${token}` } })
         .then(res => res.json())
         .then(data => {
           let users = data.items.map((item) => {
@@ -51,33 +52,37 @@ export default function App() {
               profileLink: item.url,
               repoLink: item.repos_url,
             }
-          })
+          });
 
           setAllUsers(users);
+          setSearched(true);
 
-          // Fetch user info for each user
-          let userInfoPromises = users.map(user => (
-            fetch(user.profileLink, { header: { Authorization: `Bearer ${token}`, } })
-              .then(res => res.json())
-              .then(userInfo => ({
+          if (users.length === 0) {
+            setAllUsersInfo([]);
+          } else {
+            let userInfoPromises = users.map(user => (
+              fetch(user.profileLink, { header: { Authorization: `Bearer ${token}` } })
+                .then(res => res.json())
+                .then(userInfo => ({
+                  id: userInfo.id,
+                  login: userInfo.login,
+                  name: userInfo.name,
+                  userLink: userInfo.html_url,
+                  avatar_url: userInfo.avatar_url,
+                  followers: userInfo.followers,
+                  following: userInfo.following,
+                  public_repos: userInfo.public_repos,
+                }))
+            ));
 
-                id: userInfo.id,
-                login: userInfo.login,
-                name: userInfo.name,
-                userLink: userInfo.html_url,
-                avatar_url: userInfo.avatar_url,
-                followers: userInfo.followers,
-                following: userInfo.following,
-                public_repos: userInfo.public_repos,
-
-              }))
-          ));
-
-          Promise.all(userInfoPromises)
-            .then(userInfos => {
-              setAllUsersInfo(userInfos);
-            })
-        })
+            Promise.all(userInfoPromises)
+              .then(userInfos => {
+                setAllUsersInfo(userInfos);
+              });
+          }
+        });
+    } else {
+      setSearched(false);
     }
   }, [data]);
 
@@ -120,7 +125,7 @@ export default function App() {
       </div>
 
       <div className="bodyContainer">
-        {usersData.length > 0 ? usersData : "Search for users on github"}
+        {searched && usersData.length === 0 ? "No result found" : usersData.length > 0 ? usersData : "Search for GitHub users"}
       </div>
 
 
