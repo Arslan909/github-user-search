@@ -43,7 +43,7 @@ export default function App() {
   const userName = data
   React.useEffect(() => {
     if (userName) {
-      fetch(`https://api.github.com/search/users?q=${userName}`, { header: { Authorization: `Bearer ${token}` } })
+      fetch(`https://api.github.com/search/users?q=${userName}&per_page=15`, { header: { Authorization: `Bearer ${token}` } })
         .then(res => res.json())
         .then(data => {
           let users = data.items.map((item) => {
