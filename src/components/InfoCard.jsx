@@ -6,6 +6,12 @@ export default function InfoCard(prop) {
   const [repos, setRepos] = useState([]);
   const [showRepos, setShowRepos] = useState(false);
 
+  React.useEffect(() => {
+    setRepos([]); 
+    setShowRepos(false);
+  }, [user]);
+
+
   // this function fetch repository information of the specified user
   function fetchRepoData() {
     fetch(`https://api.github.com/users/${user}/repos`, {
